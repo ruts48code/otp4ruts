@@ -1,4 +1,4 @@
-package hmac2otp0ruts
+package otp4ruts
 
 import (
 	"crypto/hmac"
