@@ -6,6 +6,8 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"time"
+
+	utils "github.com/ruts48code/utils4ruts"
 )
 
 func HmacOUT(secret []byte, data []byte) []byte {
@@ -39,22 +41,22 @@ func ChkOTPxHex(secret []byte, data []byte, size int, chk string) bool {
 }
 
 func TimeOTP(data []byte) uint64 {
-	return OTP([]byte(getTimeStamp(time.Now())), data)
+	return OTP([]byte(utils.GetTimeStamp(time.Now())), data)
 }
 
 func TimeOTPxMOD(data []byte, mod uint64) uint64 {
-	return OTPxMOD([]byte(getTimeStamp(time.Now())), data, mod)
+	return OTPxMOD([]byte(utils.GetTimeStamp(time.Now())), data, mod)
 }
 
 func TimeOTPxHex(data []byte, size int) string {
-	return OTPxHex([]byte(getTimeStamp(time.Now())), data, size)
+	return OTPxHex([]byte(utils.GetTimeStamp(time.Now())), data, size)
 }
 
 func ChkTimeOTP(data []byte, chk uint64, timerange int) bool {
 	t := time.Now()
 	for i := (-1 * timerange); i <= timerange; i++ {
 		tx := t.Add(time.Duration(i) * time.Second)
-		if OTP([]byte(getTimeStamp(tx)), data) == chk {
+		if OTP([]byte(utils.GetTimeStamp(tx)), data) == chk {
 			return true
 		}
 	}
@@ -65,7 +67,7 @@ func ChkTimeOTPxMOD(data []byte, mod uint64, chk uint64, timerange int) bool {
 	t := time.Now()
 	for i := (-1 * timerange); i <= timerange; i++ {
 		tx := t.Add(time.Duration(i) * time.Second)
-		if OTPxMOD([]byte(getTimeStamp(tx)), data, mod) == chk {
+		if OTPxMOD([]byte(utils.GetTimeStamp(tx)), data, mod) == chk {
 			return true
 		}
 	}
@@ -76,7 +78,7 @@ func ChkTimeOTPxHex(data []byte, size int, chk string, timerange int) bool {
 	t := time.Now()
 	for i := (-1 * timerange); i <= timerange; i++ {
 		tx := t.Add(time.Duration(i) * time.Second)
-		if OTPxHex([]byte(getTimeStamp(tx)), data, size) == chk {
+		if OTPxHex([]byte(utils.GetTimeStamp(tx)), data, size) == chk {
 			return true
 		}
 	}
