@@ -6,6 +6,8 @@ github.com/ruts48code/utils4ruts v0.0.0-20240314064836-8466a4f98620 h1:Hy8sq8u+W
 github.com/ruts48code/utils4ruts v0.0.0-20240314064836-8466a4f98620/go.mod h1:iCMzNjAlSb8moySfBJv46DaZKOL5L6TC3b8FqrFmawc=
 github.com/ruts48code/utils4ruts v0.0.0-20240314071741-0774b7719851 h1:NMe40VFikYflP+0Y2EbdoArj4Ch3ystndINukJQ8NJo=
 github.com/ruts48code/utils4ruts v0.0.0-20240314071741-0774b7719851/go.mod h1:iCMzNjAlSb8moySfBJv46DaZKOL5L6TC3b8FqrFmawc=
+github.com/ruts48code/utils4ruts v0.0.0-20240314074217-41b4c4c6b930 h1:o7xgKoeqZ0DKsFI1CGHIEAGRA3RlR+EEk1FxFQAtTvc=
+github.com/ruts48code/utils4ruts v0.0.0-20240314074217-41b4c4c6b930/go.mod h1:iCMzNjAlSb8moySfBJv46DaZKOL5L6TC3b8FqrFmawc=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
