@@ -2,7 +2,7 @@ module github.com/ruts48code/otp4ruts
 
 go 1.22.1
 
-require github.com/ruts48code/utils4ruts v0.0.0-20240323054002-060db92a232a
+require github.com/ruts48code/utils4ruts v0.0.0-20240326023658-0e67652f2a4f
 
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
