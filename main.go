@@ -2,6 +2,7 @@ package otp4ruts
 
 import (
 	"crypto/hmac"
+	"crypto/sha256"
 	"crypto/sha512"
 	"encoding/binary"
 	"encoding/hex"
@@ -9,6 +10,39 @@ import (
 
 	utils "github.com/ruts48code/utils4ruts"
 )
+
+// OTP for RUTS sha256
+
+func HmacOUT256(secret []byte, data []byte) []byte {
+	h := hmac.New(sha256.New, secret)
+	h.Write(data)
+	return h.Sum(nil)
+}
+
+func OTP256Hex(secret []byte, data []byte) string {
+	return hex.EncodeToString(HmacOUT(secret, data))
+}
+
+func TimeOTP256Hex(secret []byte, data []byte) string {
+	return hex.EncodeToString(HmacOUT([]byte(utils.GetTimeStamp(time.Now())), data))
+}
+
+func ChkOTP256Hex(secret []byte, data []byte, chk string) bool {
+	return OTP256Hex(secret, data) == chk
+}
+
+func ChkTimeOTP256Hex(data []byte, chk string, timerange int) bool {
+	t := time.Now()
+	for i := (-1 * timerange); i <= timerange; i++ {
+		tx := t.Add(time.Duration(i) * time.Second)
+		if OTP256Hex([]byte(utils.GetTimeStamp(tx)), data) == chk {
+			return true
+		}
+	}
+	return false
+}
+
+// Standard OTP
 
 func HmacOUT(secret []byte, data []byte) []byte {
 	h := hmac.New(sha512.New, secret)
