@@ -23,7 +23,7 @@ func OTP256Hex(secret []byte, data []byte) string {
 	return hex.EncodeToString(HmacOUT(secret, data))
 }
 
-func TimeOTP256Hex(secret []byte, data []byte) string {
+func TimeOTP256Hex(data []byte) string {
 	return hex.EncodeToString(HmacOUT([]byte(utils.GetTimeStamp(time.Now())), data))
 }
 
