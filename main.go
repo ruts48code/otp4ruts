@@ -19,23 +19,23 @@ func HmacOUT256(secret []byte, data []byte) []byte {
 	return h.Sum(nil)
 }
 
-func OTP256Hex(secret []byte, data []byte) string {
-	return hex.EncodeToString(HmacOUT256(secret, data))
+func OTP256Hex(text []byte, key []byte) string {
+	return hex.EncodeToString(HmacOUT256(key, text))
 }
 
-func TimeOTP256Hex(data []byte) string {
-	return hex.EncodeToString(HmacOUT256(data, []byte(utils.GetTimeStamp(time.Now()))))
+func TimeOTP256Hex(key []byte) string {
+	return hex.EncodeToString(HmacOUT256(key, []byte(utils.GetTimeStamp(time.Now()))))
 }
 
-func ChkOTP256Hex(secret []byte, data []byte, chk string) bool {
-	return OTP256Hex(secret, data) == chk
+func ChkOTP256Hex(text []byte, key []byte, chk string) bool {
+	return OTP256Hex(text, key) == chk
 }
 
-func ChkTimeOTP256Hex(data []byte, chk string, timerange int) bool {
+func ChkTimeOTP256Hex(key []byte, chk string, timerange int) bool {
 	t := time.Now()
 	for i := (-1 * timerange); i <= timerange; i++ {
 		tx := t.Add(time.Duration(i) * time.Second)
-		if OTP256Hex([]byte(utils.GetTimeStamp(tx)), data) == chk {
+		if OTP256Hex([]byte(utils.GetTimeStamp(tx)), key) == chk {
 			return true
 		}
 	}
