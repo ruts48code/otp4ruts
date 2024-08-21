@@ -24,7 +24,7 @@ func OTP256Hex(secret []byte, data []byte) string {
 }
 
 func TimeOTP256Hex(data []byte) string {
-	return hex.EncodeToString(HmacOUT256([]byte(utils.GetTimeStamp(time.Now())), data))
+	return hex.EncodeToString(HmacOUT256(data, []byte(utils.GetTimeStamp(time.Now()))))
 }
 
 func ChkOTP256Hex(secret []byte, data []byte, chk string) bool {
